@@ -44,9 +44,6 @@
         <li>
           <a href="/faqs.html">常见问题</a>
         </li>
-        <li>
-          <a href="/platforms.html">其他平台</a>
-        </li>
       </ul>
     </div>
   </div>
@@ -78,8 +75,7 @@
         <code>false</code>：禁用 RSS，不在页面上显示 RSS 连接。
       </li>
       <li>
-        留空：使用 Hexo 生成的 Feed 链接。
-        你可以需要先安装 <a href="https://github.com/hexojs/hexo-generator-feed" target="_blank">hexo-generator-feed</a> 插件。
+        留空：使用 Jekyll 生成的 Feed 链接。
       </li>
       <li>
         具体的链接地址：适用于已经烧制过 Feed 的情形。
@@ -93,26 +89,22 @@
     <p>新建「标签」页面，并在菜单中显示「标签」链接。「标签」页面将展示站点的所有标签，若你的所有文章都未包含标签，此页面将是空的。
       底下代码是一篇包含标签的文章的例子：
     </p>
-<pre><code class="md hljs">title: 标签测试文章
+<pre><code class="md hljs">---
+title: 标签测试文章
 tags:
   - Testing
 <span class="hljs-section">  - Another Tag
 ---</span>
 </code></pre>    <p class="bs-callout bs-callout-info">
-      请参阅 <a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank">
-        Hexo 的分类与标签文档</a>，了解如何为文章添加标签或者分类。
+      请参阅 <a href="http://jekyllcn.com/docs/frontmatter/" target="_blank">
+        Jekyll 头信息文档</a>，了解如何为文章添加标签或者分类。
     </p>
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
-        <a href="#new-page-tags" aria-controls="clone" role="tab" data-toggle="tab">
-          新建页面
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#set-page-tags" aria-controls="profile" role="tab" data-toggle="tab">
-          设置页面类型
+        <a href="#page-tags" aria-controls="profile" role="tab" data-toggle="tab">
+          标签页面
         </a>
       </li>
       <li role="presentation">
@@ -124,17 +116,13 @@ tags:
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="new-page-tags">
-        <p>在终端窗口下，定位到 Hexo 站点目录下。使用 <code>hexo new page</code> 新建一个页面，命名为 <code>tags</code> ：</p>
-<pre><code class="vim hljs">$ <span class="hljs-keyword">cd</span> your-hexo-site
-$ hexo <span class="hljs-keyword">new</span> page <span class="hljs-keyword">tags</span>
-</code></pre>      </div>
-      <div role="tabpanel" class="tab-pane" id="set-page-tags">
-        <p>编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
-<pre><code class="markdown hljs">title: 标签
-date: 2014-12-22 12:39:04
-<span class="hljs-section">type: "tags"
----</span>
+      <div role="tabpanel" class="tab-pane active" id="page-tags">
+        <p>主题已经建立了<code>tags/index.html</code>标签页面，将自动为这个页面显示标签云。页面内容如下：</p>
+<pre><code class="markdown hljs">---
+title: 标签
+layout: page
+type: tags
+---
 </code></pre>      </div>
       <div role="tabpanel" class="tab-pane" id="update-menu-for-tags-page">
         <p>
@@ -152,9 +140,10 @@ date: 2014-12-22 12:39:04
       若需要关闭的话，请添加字段 <code>comments</code> 并将值设置为 <code>false</code>，如：
     </p>
     <div class="next-docs-example">禁用评论示例</div>
-<pre><code class="markdown hljs">title: 标签
-date: 2014-12-22 12:39:04
-type: "tags"
+<pre><code class="markdown hljs">---
+title: 标签
+layout: page
+type: tags
 <span class="hljs-section">comments: false
 ---</span>
 </code></pre>  </section>
@@ -166,23 +155,19 @@ type: "tags"
       新建「分类」页面，并在菜单中显示「分类」链接。「分类」页面将展示站点的所有分类，若你的所有文章都未包含分类，此页面将是空的。
       底下代码是一篇包含分类的文章的例子：
     </p>
-<pre><code class="md hljs">title: 分类测试文章
+<pre><code class="md hljs">---
+title: 分类测试文章
 <span class="hljs-section">categories: Testing
 ---</span>
 </code></pre>    <p class="bs-callout bs-callout-info">
-      请参阅 <a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank">
-        Hexo 的分类与标签文档</a>，了解如何为文章添加标签或者分类。
+      请参阅 <a href="http://jekyllcn.com/docs/frontmatter/" target="_blank">
+        Jekyll 头信息文档</a>，了解如何为文章添加标签或者分类。
     </p>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
-        <a href="#new-page-categories" aria-controls="clone" role="tab" data-toggle="tab">
-          新建页面
-        </a>
-      </li>
-      <li role="presentation">
-        <a href="#set-page-categories" aria-controls="profile" role="tab" data-toggle="tab">
-          设置页面类型
+        <a href="#page-categories" aria-controls="profile" role="tab" data-toggle="tab">
+          分类页面
         </a>
       </li>
       <li role="presentation">
@@ -194,16 +179,12 @@ type: "tags"
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="new-page-categories">
-        <p>在终端窗口下，定位到 Hexo 站点目录下。使用 <code>hexo new page</code> 新建一个页面，命名为 <code>categories</code> ：</p>
-<pre><code class="elixir hljs"><span class="hljs-variable">$ </span>cd your-hexo-site
-<span class="hljs-variable">$ </span>hexo new page categories
-</code></pre>      </div>
-      <div role="tabpanel" class="tab-pane" id="set-page-categories">
-        <p>编辑刚新建的页面，将页面的 <code>type</code> 设置为 <code>categories</code> ，主题将自动为这个页面显示分类。页面内容如下：</p>
-<pre><code class="markdown hljs">title: 分类
-date: 2014-12-22 12:39:04
-<span class="hljs-section">type: "categories"
+      <div role="tabpanel" class="tab-pane active" id="page-categories">
+        <p>主题已经建立了<code>categories/index.html</code>分类页面 ，主题将自动为这个页面显示分类。页面内容如下：</p>
+<pre><code class="markdown hljs">---
+title: 分类
+layout: page
+<span class="hljs-section">type: categories
 ---</span>
 </code></pre>      </div>
       <div role="tabpanel" class="tab-pane" id="update-menu-for-categories-page">
@@ -222,9 +203,10 @@ date: 2014-12-22 12:39:04
       若需要关闭的话，请添加字段 <code>comments</code> 并将值设置为 <code>false</code>，如：
     </p>
     <div class="next-docs-example">禁用评论示例</div>
-<pre><code class="markdown hljs">title: 分类
-date: 2014-12-22 12:39:04
-type: "categories"
+<pre><code class="markdown hljs">---
+title: 分类
+layout: page
+type: categories
 <span class="hljs-section">comments: false
 ---</span>
 </code></pre>  </section>
@@ -405,7 +387,7 @@ type: "categories"
     <p>
       腾讯公益404页面，寻找丢失儿童，让大家一起关注此项公益事业！效果如下 <a href="http://www.ixirong.com/404.html">http://www.ixirong.com/404.html</a>
     </p>
-    <p>使用方法，新建 404.html 页面，放到主题的 <code>source</code> 目录下，内容如下：</p>
+    <p>主题已经新建<code>404.html</code>腾讯公益404页面，内容如下：</p>
 <pre><code class="html hljs"><span class="hljs-meta">&lt;!DOCTYPE HTML&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
@@ -496,7 +478,7 @@ type: "categories"
 
 
           <div class="text-center next-docs-section-footer">
-            <a href="https://github.com/iissnan/theme-next-docs/issues"
+            <a href="https://github.com/simpleyyt/theme-next-docs/issues"
                target="_blank" class="next-docs-btn next-docs-btn-default">
               <i class="fa fa-bug"></i> 文档问题反馈
             </a>
@@ -539,12 +521,12 @@ type: "categories"
   <div class="container">
     <hr>
     <p class="pull-right text-muted next-maker">
-      &copy; Made by <a href="https://github.com/iissnan" target="_blank">IIssNan</a>
+      &copy; Made by <a href="https://github.com/simpleyyt" target="_blank">Simpleyyt</a>
     </p>
     <div>
       <ul class="next-docs-footer-links">
-        <li><a href="https://github.com/iissnan/theme-next-docs/issues">文档问题反馈</a></li>
-        <li><a href="https://github.com/iissnan/theme-next-docs">文档 @ GitHub</a></li>
+        <li><a href="https://github.com/simpleyyt/theme-next-docs/issues">文档问题反馈</a></li>
+        <li><a href="https://github.com/simpleyyt/theme-next-docs">文档 @ GitHub</a></li>
       </ul>
     </div>
   </div>
